@@ -12,6 +12,7 @@
         "doctrine/orm": "^2.7",
         "ninsuo/symfony-collection": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
+        "pugx/autocompleter-bundle": "^1.7",
         "sensio/framework-extra-bundle": "^5.6",
         "symfony/asset": "5.2.*",
         "symfony/console": "5.2.*",

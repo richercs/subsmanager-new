@@ -40,6 +40,7 @@
         "symfony-collection": "github:ninsuo/symfony-collection"
     },
     "devDependencies": {
+        "@pugx/autocompleter-bundle": "file:vendor/pugx/autocompleter-bundle/assets",
         "browser-sync": "2.26.7",
         "del": "5.1.0",
         "gulp": "4.0.2",

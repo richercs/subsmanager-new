@@ -4,4 +4,5 @@ RUN apk add --no-cache bash
 RUN apk update
 RUN apk add python
 RUN apk add make
+RUN apk add git
 RUN apk add g++

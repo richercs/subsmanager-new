@@ -1,4 +1,4 @@
-127.0.0.1       app.docker
+127.0.0.1       berletek.tornazzvelem.docker
 
 docker-compose up -d --build
 

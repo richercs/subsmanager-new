@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   php:
-    container_name: 'app-php_fpm'
+    container_name: 'subsmanager-php-fpm'
     network_mode: bridge
     build:
       context: ./.docker/php-fpm
@@ -14,9 +14,11 @@ services:
     expose:
       - 9000
     user: '1000'
+    links:
+      - db
 
   nginx:
-    container_name: 'app.docker'
+    container_name: 'berletek.tornazzvelem.docker'
     network_mode: bridge
     build: .docker/nginx
     ports:
@@ -25,10 +27,31 @@ services:
       - ./public:/app/public:ro
       - ./.docker/nginx/etc/nginx:/etc/nginx:ro,cached
     links:
-      - php
+      - "php"
 
   nodejs:
     network_mode: bridge
     build: .docker/nodejs
     volumes:
       - .:/app:rw,delegated
+
+  db:
+    container_name: 'subsmanager-db'
+    network_mode: bridge
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'subsmanager'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'user'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'password'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+    volumes:
+      - ./.docker/db/data:/var/lib/mysql

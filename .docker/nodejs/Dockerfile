@@ -6,3 +6,4 @@ RUN apk add python
 RUN apk add make
 RUN apk add git
 RUN apk add g++
+RUN npm install -g bower gulp
